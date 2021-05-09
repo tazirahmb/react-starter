@@ -5,7 +5,15 @@
   "license": "MIT",
   "scripts": {
     "serve": "node tools/srcServer.js",
-    "version": "auto-changelog -p && git add changelog.md"
+    "version": "auto-changelog -p && git add changelog.md",
+    "lint": "esw src/ --color",
+    "lint:watch": "npm run lint -- --watch",
+    "lint:commit": "npm run lint -- --quiet",
+    "lint-staged": "lint-staged",
+    "test": "jest --updateSnapshot --runInBand",
+    "test:commit": "jest --updateSnapshot --runInBand --silent --passWithNoTests ./src",
+    "test:cover": "npm run test -- --coverage ",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.14",
@@ -27,12 +35,15 @@
     "eslint-plugin-sonarjs": "^0.6.0",
     "eslint-watch": "^7.0.0",
     "html-webpack-plugin": "^5.3.1",
+    "jest": "^26.6.3",
+    "lint-staged": "^11.0.0",
     "prettier": "^2.2.1",
     "react-hot-loader": "^4.13.0",
     "webpack": "^5.30.0",
     "webpack-bundle-analyzer": "^4.4.0",
     "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "husky": "^6.0.0"
   },
   "dependencies": {
     "@hot-loader/react-dom": "^17.0.1",
@@ -47,5 +58,14 @@
     "redux": "^4.0.5",
     "typeface-ubuntu": "^1.1.13",
     "yup": "^0.32.9"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --write",
+      "npm run lint:commit"
+    ],
+    "*": [
+      "npm run test:commit"
+    ]
   }
 }

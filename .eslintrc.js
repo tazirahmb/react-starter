@@ -10,7 +10,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'prettier',
   ],
-  plugins: ['react', 'jest', 'react-hooks', 'sonar-js', 'prettier'],
+  plugins: ['react', 'jest', 'react-hooks', 'sonarjs', 'prettier'],
   parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 6,
