@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { render } from 'react-dom';
-import App from './App';
+import App from '~/App';
 import { AppContainer } from 'react-hot-loader';
 import configureStore, { history } from './redux/configureStore';
 import ErrorBoundary from './pages/ErrorBoundary';
