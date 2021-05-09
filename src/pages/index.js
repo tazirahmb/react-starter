@@ -1,5 +1,6 @@
-import Home from './Home';
+import React from 'react';
 
 export default {
-  Home,
+  Home: React.lazy(() => import('./Home')),
+  NotFound: React.lazy(() => import('./NotFound')),
 };
