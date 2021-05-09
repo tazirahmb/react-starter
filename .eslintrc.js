@@ -2,8 +2,7 @@ module.exports = {
   root: true,
   extends: [
     'eslint:recommended',
-    'plugin:import/error',
-    'plugin:import/warning',
+    'plugin:import/recommended',
     'plugin:jest/recommended',
     'plugin:sonarjs/recommended',
     'plugin:react/recommended',
@@ -27,4 +26,16 @@ module.exports = {
   // rules: {},
   // overrides: {},
   // global: {},
+  settings: {
+    react: {
+      version: 'detect',
+    },
+    'import/resolver': {
+      'eslint-import-resolver-custom-alias': {
+        alias: {
+          '~': './src',
+        },
+      },
+    },
+  },
 };

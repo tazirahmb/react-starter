@@ -25,7 +25,7 @@ module.exports = {
   devtool: 'eval',
   entry: [
     // must be first entry to properly set public path
-    './src/webpack-public-path',
+    './tools/webpack-public-path',
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
     path.resolve(__dirname, 'src/index.js'), // Defining path seems necessary for this to work consistently on Windows machines.

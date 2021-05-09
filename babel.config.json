@@ -4,6 +4,23 @@
       "presets": [
         "@babel/preset-env",
         "@babel/preset-react"
+      ],
+      "plugins": [
+        [
+          "module-resolver",
+          {
+            "root": [
+              "."
+            ],
+            "extensions": [
+              ".js",
+              ".json"
+            ],
+            "alias": {
+              "~": "./src"
+            }
+          }
+        ]
       ]
     },
     "production": {
@@ -18,12 +35,46 @@
           }
         ],
         "@babel/preset-react"
+      ],
+      "plugins": [
+        [
+          "module-resolver",
+          {
+            "root": [
+              "."
+            ],
+            "extensions": [
+              ".js",
+              ".json"
+            ],
+            "alias": {
+              "~": "./src"
+            }
+          }
+        ]
       ]
     },
     "test": {
       "presets": [
         "@babel/preset-env",
         "@babel/preset-react"
+      ],
+      "plugins": [
+        [
+          "module-resolver",
+          {
+            "root": [
+              "."
+            ],
+            "extensions": [
+              ".js",
+              ".json"
+            ],
+            "alias": {
+              "~": "./src"
+            }
+          }
+        ]
       ]
     }
   }

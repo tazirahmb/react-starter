@@ -8,7 +8,7 @@ const config = require('../webpack.config');
 
 const bundler = webpack(config);
 // const app = express();
-const port = 3000;
+const port = 3333;
 
 new WebpackDevServer(bundler, {
   publicPath: config.output.publicPath,
