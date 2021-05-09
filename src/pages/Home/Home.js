@@ -8,7 +8,7 @@ export default function Home() {
         Node Env: <b>{process.env.NODE_ENV}</b>
       </p>
       <p>
-        yes Mode: <b>{process.env.MODE}</b>
+        Mode: <b>{process.env.MODE}</b>
       </p>
       <p>
         is prod? <b>{process.env.__PROD__.toString()}</b>

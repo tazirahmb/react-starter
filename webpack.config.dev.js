@@ -1,9 +1,6 @@
-// import webpack from 'webpack';
-// import path from 'path';
-
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import webpack from 'webpack';
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const buildMode = (process.argv[2] || '').split('--')[1] || 'development';
 
@@ -14,8 +11,7 @@ const GLOBALS = {
   __UAT__: process.env.NODE_ENV === 'test',
 };
 
-// export default {
-module.exports = {
+export default {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
     alias: {
@@ -26,7 +22,7 @@ module.exports = {
   entry: [
     // must be first entry to properly set public path
     './tools/webpack-public-path',
-    'webpack-dev-server/client?http://localhost:3000',
+    'webpack-hot-middleware/client?reload=true',
     'webpack/hot/only-dev-server',
     path.resolve(__dirname, 'src/index.js'), // Defining path seems necessary for this to work consistently on Windows machines.
   ],
@@ -42,6 +38,7 @@ module.exports = {
     new webpack.EnvironmentPlugin(GLOBALS),
 
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       // Create HTML file that includes references to bundled CSS and JS.
       template: 'src/index.ejs',

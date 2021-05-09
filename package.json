@@ -1,10 +1,10 @@
 {
-  "name": "webpack-babel",
+  "name": "react-codebase-starter",
   "version": "1.0.2",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "serve": "node tools/srcServer.js",
+    "serve": "babel-node tools/srcServer.js",
     "version": "auto-changelog -p && git add changelog.md",
     "lint": "esw src/ --color",
     "lint:watch": "npm run lint -- --watch",
@@ -20,6 +20,7 @@
   "devDependencies": {
     "@babel/cli": "^7.13.14",
     "@babel/core": "^7.13.14",
+    "@babel/node": "^7.13.13",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-react": "^7.13.13",
@@ -32,6 +33,7 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.1.0",
     "chalk": "^4.1.0",
+    "connect-history-api-fallback": "^1.6.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.2",
@@ -45,6 +47,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-sonarjs": "^0.6.0",
     "eslint-watch": "^7.0.0",
+    "express": "^4.17.1",
     "html-webpack-plugin": "^5.3.1",
     "husky": "^6.0.0",
     "jest": "^26.6.3",
@@ -55,7 +58,9 @@
     "webpack": "^5.30.0",
     "webpack-bundle-analyzer": "^4.4.0",
     "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-middleware": "^4.1.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-hot-middleware": "^2.25.0"
   },
   "dependencies": {
     "@hot-loader/react-dom": "^17.0.1",
