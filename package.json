@@ -13,7 +13,9 @@
     "test": "jest --updateSnapshot --runInBand",
     "test:commit": "jest --updateSnapshot --runInBand --silent --passWithNoTests ./src",
     "test:cover": "npm run test -- --coverage ",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.14",
@@ -21,6 +23,10 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-react": "^7.13.13",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/react": "^6.2.9",
     "auto-changelog": "^2.2.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
