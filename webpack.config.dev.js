@@ -28,6 +28,9 @@ export default {
   ],
   target: 'web',
   mode: 'development',
+  optimization: {
+    usedExports: true,
+  },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
