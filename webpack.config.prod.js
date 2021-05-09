@@ -2,7 +2,7 @@ import webpack from 'webpack';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-const buildMode = (process.argv[2] || '').split('--')[1] || 'development';
+const buildMode = (process.argv[2] || '').split('--')[1] || 'production';
 
 const GLOBALS = {
   MODE: buildMode,
@@ -14,24 +14,14 @@ const GLOBALS = {
 export default {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
-    alias: {
-      'react-dom': '@hot-loader/react-dom',
-    },
   },
-  devtool: 'eval',
-  entry: [
-    // must be first entry to properly set public path
-    './tools/webpack-public-path',
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    path.resolve(__dirname, 'src/index.js'), // Defining path seems necessary for this to work consistently on Windows machines.
-  ],
+  devtool: 'source-map',
+  entry: path.resolve(__dirname, 'src/index.js'),
   target: 'web',
-  // mode development and production
   mode: 'production',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].[chunkhash].js', // using chunks for distributed build
     publicPath: '/',
   },
   plugins: [

@@ -27,7 +27,6 @@ export default {
     path.resolve(__dirname, 'src/index.js'), // Defining path seems necessary for this to work consistently on Windows machines.
   ],
   target: 'web',
-  // mode development and production
   mode: 'development',
   output: {
     path: path.join(__dirname, 'dist'),
