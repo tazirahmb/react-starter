@@ -14,9 +14,9 @@ new WebpackDevServer(bundler, {
   publicPath: config.output.publicPath,
   hot: true,
   historyApiFallback: true,
-  quiet: true,
+  // quiet: true,
   stats: 'minimal',
-}).listen(port, 'localhost', function (err, result) {
+}).listen(port, 'localhost', function (err) {
   if (err) {
     return console.log(err);
   }

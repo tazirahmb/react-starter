@@ -1,6 +1,4 @@
-const routes = {
+export default {
   HOME: () => '/',
   PROFILE: (name = ':name') => `/${name}`,
 };
-
-export default routes;

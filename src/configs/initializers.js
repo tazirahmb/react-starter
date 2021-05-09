@@ -12,8 +12,6 @@ switch (process.env.MODE) {
     break;
 }
 
-const initializers = {
+export default {
   BASE_URL,
 };
-
-export default initializers;

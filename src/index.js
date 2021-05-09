@@ -2,20 +2,23 @@ import React, { Suspense } from 'react';
 import { render } from 'react-dom';
 import App from './App';
 import { AppContainer } from 'react-hot-loader';
-import { createBrowserHistory } from 'history';
+import configureStore, { history } from './redux/configureStore';
 import ErrorBoundary from './pages/ErrorBoundary';
 import { Router } from 'react-router';
+import { Provider } from 'react-redux';
 
-const history = createBrowserHistory();
+const store = configureStore();
 
 // define root configuration
 const Root = () => (
   <ErrorBoundary>
-    <Router history={history}>
-      <Suspense fallback={<div>Loading...</div>}>
-        <App />
-      </Suspense>
-    </Router>
+    <Provider store={store}>
+      <Router history={history}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <App />
+        </Suspense>
+      </Router>
+    </Provider>
   </ErrorBoundary>
 );
 

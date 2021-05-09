@@ -5,13 +5,13 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const buildMode = (process.argv[2] || '').split('--')[1] || 'staging';
+const buildMode = (process.argv[2] || '').split('--')[1] || 'development';
 
 const GLOBALS = {
   MODE: buildMode,
-  __PROD__: buildMode === 'production',
-  __DEV__: buildMode === 'development',
-  __UAT__: buildMode === 'staging',
+  __PROD__: process.env.NODE_ENV === 'production',
+  __DEV__: process.env.NODE_ENV === 'development',
+  __UAT__: process.env.NODE_ENV === 'test',
 };
 
 // export default {
