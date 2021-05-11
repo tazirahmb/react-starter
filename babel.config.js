@@ -1,6 +1,4 @@
-const alias = {
-  '~': './src',
-};
+const alias = require('./tools/alias').alias;
 
 module.exports = {
   env: {

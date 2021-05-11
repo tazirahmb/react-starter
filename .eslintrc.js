@@ -1,3 +1,5 @@
+const alias = require('./tools/alias').alias;
+
 module.exports = {
   root: true,
   extends: [
@@ -32,9 +34,7 @@ module.exports = {
     },
     'import/resolver': {
       'eslint-import-resolver-custom-alias': {
-        alias: {
-          '~': './src',
-        },
+        alias,
       },
     },
   },
