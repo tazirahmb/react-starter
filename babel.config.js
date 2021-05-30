@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 const alias = require('./tools/alias').alias;
 
 module.exports = {
