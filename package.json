@@ -3,6 +3,7 @@
   "version": "1.0.4",
   "main": "index.js",
   "license": "MIT",
+  "sideEffects": false,
   "scripts": {
     "open:src": "babel-node tools/srcServer.js",
     "serve": "concurrently -k -r \"npm:open:src\" \"npm:lint:watch\"",
