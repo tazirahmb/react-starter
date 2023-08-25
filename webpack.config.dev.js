@@ -1,43 +1,34 @@
 import webpack from 'webpack';
-import path from 'path';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import * as loaders from './tools/loaders';
+import commonConfigs from './webpack.common';
+import { merge } from 'webpack-merge';
 
-const buildMode = (process.argv[2] || '').split('--')[1] || 'development';
-
-const GLOBALS = {
-  MODE: buildMode,
-  __PROD__: process.env.NODE_ENV === 'production',
-  __DEV__: process.env.NODE_ENV === 'development',
-  __UAT__: process.env.NODE_ENV === 'test',
-};
-
-export default {
+export default merge(commonConfigs, {
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json'],
-    alias: {},
+    alias: {
+      react: path.resolve('./node_modules/react'),
+    },
   },
   devtool: 'eval-cheap-source-map',
   entry: [
     // must be first entry to properly set public path
     './tools/webpack-public-path',
     'webpack-hot-middleware/client?reload=true',
-    path.resolve(__dirname, 'src/index.js'), // Defining path seems necessary for this to work consistently on Windows machines.
   ],
-  target: 'web',
   mode: 'development',
   optimization: {
     usedExports: true,
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    publicPath: 'http://localhost:4000/', // to use module federation, change the port to your active port
     filename: 'bundle.js',
-    publicPath: '/',
   },
-  plugins: [
-    new webpack.EnvironmentPlugin(GLOBALS),
-
+    plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       // Create HTML file that includes references to bundled CSS and JS.
       template: 'src/index.ejs',
@@ -48,13 +39,5 @@ export default {
       inject: true,
     }),
   ],
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: ['babel-loader'],
-      },
-    ],
-  },
-};
+
+});
