@@ -12,7 +12,7 @@ module.exports = {
     'prettier',
   ],
   plugins: ['react', 'jest', 'react-hooks', 'sonarjs', 'prettier'],
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',

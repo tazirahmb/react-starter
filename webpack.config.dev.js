@@ -14,9 +14,7 @@ const GLOBALS = {
 export default {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
-    alias: {
-      'react-dom': '@hot-loader/react-dom',
-    },
+    alias: {},
   },
   devtool: 'eval-cheap-source-map',
   entry: [
